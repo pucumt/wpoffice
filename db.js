@@ -55,6 +55,10 @@ function defineModel(name, attributes) {
         defaultValue: Sequelize.NOW,
         allowNull: false
     };
+    attrs.updatedBy = {
+        type: Sequelize.STRING(50),
+        defaultValue: ''
+    };
     attrs.updatedDate = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW,
@@ -95,8 +99,7 @@ function defineModel(name, attributes) {
                     obj.version++;
                 }
             }
-        },
-        charset: 'utf8mb4'
+        }
     });
 }
 

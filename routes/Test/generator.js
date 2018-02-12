@@ -36,15 +36,15 @@ module.exports = function (app) {
         var objId = req.body.objId,
             objCase = objId[0].toUpperCase() + objId.substr(1);
         //generate models
-        var modelPath = path.join(root, "models/template4.md"),
-            targetPath = path.join(root, "models/" + objId + ".js");
+        var modelPath = path.join(root, "models/mysql/template.md"),
+            targetPath = path.join(root, "models/mysql/" + objId + ".js");
         readFile(modelPath, targetPath, function (str) {
             var strResult = str.replace(/#name#/g, objId);
             return strResult.replace(/#Name#/g, objCase);
         });
 
         //generate routes
-        modelPath = path.join(root, "routes/Server/template4.md"),
+        modelPath = path.join(root, "routes/Server/template.md"),
             targetPath = path.join(root, "routes/Server/" + objId + ".js");
         readFile(modelPath, targetPath, function (str) {
             var strResult = str.replace(/#name#/g, objId);
@@ -52,7 +52,7 @@ module.exports = function (app) {
         });
 
         //generate views
-        modelPath = path.join(root, "views/Server/template4.md"),
+        modelPath = path.join(root, "views/Server/template.md"),
             targetPath = path.join(root, "views/Server/" + objId + "List.html"); // "List.html");
         readFile(modelPath, targetPath, function (str) {
             var strResult = str.replace(/#name#/g, objId);
@@ -60,8 +60,8 @@ module.exports = function (app) {
         });
 
         //generate public js
-        modelPath = path.join(root, "public/default/assets/js/template4.md"),
-            targetPath = path.join(root, "public/default/assets/js/Server/" + objId + ".js");
+        modelPath = path.join(root, "public/default/assets/js/template.md"),
+            targetPath = path.join(root, "public/default/assets/js/Server/" + objId + "List.js");
         readFile(modelPath, targetPath, function (str) {
             var strResult = str.replace(/#name#/g, objId);
             return strResult.replace(/#Name#/g, objCase);
